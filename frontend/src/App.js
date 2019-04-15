@@ -4,6 +4,7 @@ import './App.css';
 import Routes from './pages/routes'
 import NavComp from './components/NavComp'
 import LandingPage from './pages/landing/index'
+import { withRouter } from 'react-router-dom'
 
 class App extends Component {
 
@@ -26,7 +27,7 @@ class App extends Component {
         localStorage.setItem('token', userObj.jwt)
         this.setState({
           user: userObj.user
-      }, () => console.log(this.state.user))
+      }, () => this.props.history.push(`/${this.state.user.first_name}/gifts`))
       })
   }
 
@@ -46,7 +47,7 @@ class App extends Component {
         localStorage.setItem('token', userObj.jwt)
         this.setState({
           user: userObj.user
-      }, () => console.log(this.state.user))
+      }, () => this.props.history.push(`/${this.state.user.first_name}/gifts`))
     })
   }
 
@@ -89,4 +90,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter (App);
