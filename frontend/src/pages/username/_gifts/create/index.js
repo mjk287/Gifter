@@ -5,7 +5,7 @@ class CreatePage extends React.Component {
     gift: {
       note: '',
       img: '',
-      sender_id: this.props.userObj.user.id,
+      sender_id: this.props.userObj.user.first_name,
       user_id: 0,
       date: new Date()
     },

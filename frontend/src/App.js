@@ -44,7 +44,6 @@ class App extends Component {
     })
       .then(res => res.json())
       .then(userObj => {
-        debugger
         localStorage.setItem('token', userObj.jwt)
         this.setState({
           user: userObj.user,
