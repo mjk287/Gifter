@@ -4,7 +4,6 @@ import GiftsRoutes from './_gifts/routes'
 
 class UsernameRoutes extends React.Component {
   render(){
-    console.log('hit it')
     return(
       <Switch>
       <Route

@@ -32,7 +32,6 @@ class App extends Component {
   }
 
   handleLogin = (e, user) => {
-    console.log(user)
     e.preventDefault()
     fetch("http://localhost:3000/api/v1/login", {
       method: "POST",
@@ -44,6 +43,7 @@ class App extends Component {
     })
       .then(res => res.json())
       .then(userObj => {
+        debugger
         localStorage.setItem('token', userObj.jwt)
         this.setState({
           user: userObj.user
@@ -84,7 +84,7 @@ class App extends Component {
       .then(userJSON => {
         this.setState({
           user: userJSON.user
-        }, () => console.log(this.state.user))
+        })
       })
     }
   }
