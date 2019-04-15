@@ -5,7 +5,13 @@ class ShowPage extends React.Component {
     note: '',
     img: '',
     user: null,
+    song: ''
   }
+
+  embedMusic = (input) => {
+  const videoId = input.split('v=')[1]
+  return `https://www.youtube.com/embed/${videoId}?autoplay=1`
+}
 
   componentDidMount() {
     fetch(`http://localhost:3000/api/v1/gifts/${this.props.id}`)
@@ -14,7 +20,8 @@ class ShowPage extends React.Component {
       this.setState({
         note: gift.note,
         img: gift.img,
-        user: gift.user
+        user: gift.user,
+        song: gift.song,
       }, () => console.log(this.state))
     })
   }
@@ -27,6 +34,7 @@ class ShowPage extends React.Component {
       }
         <p>{this.state.note}</p>
         <img src={this.state.img} />
+        <iframe width="0" height="0" allow="autoplay" src={this.embedMusic(this.state.song)}></iframe>
       </div>
     )
   }

@@ -7,7 +7,8 @@ class CreatePage extends React.Component {
       img: '',
       sender_id: this.props.userObj.user.first_name,
       user_id: 0,
-      date: new Date()
+      date: new Date(),
+      song: ''
     },
     users: []
   }
@@ -46,6 +47,8 @@ class CreatePage extends React.Component {
           <input type='text' name='note' placeholder='Message' value={this.state.note} onChange={this.handleChange} required></input>
           <label htmlFor="img">Image URL</label>
           <input type='text' name='img' placeholder='Image URL' value={this.state.img} onChange={this.handleChange} required></input>
+          <label htmlFor="song">Song URL</label>
+          <input type='text' name='song' placeholder='Song URL' value={this.state.song} onChange={this.handleChange} required></input>
           <select name='user_id' onChange={this.handleChange}>{this.optionMap()}</select>
           <p>From: <i>{this.props.userObj.user.first_name} {this.props.userObj.user.last_name}</i></p>
           <button>Send Gift</button>
