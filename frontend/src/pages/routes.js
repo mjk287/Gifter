@@ -9,7 +9,7 @@ class Routes extends React.Component {
       <Switch>
         <Route
           path='/:username'
-          render={({match}) => <UsernameRoutes match={match}/>}
+          render={({match}) => <UsernameRoutes user={this.props.user} match={match}/>}
         />
 
       </Switch>
