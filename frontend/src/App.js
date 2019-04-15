@@ -54,7 +54,8 @@ class App extends Component {
 
   handleLogout = () => {
    this.setState({
-     user: null
+     user: null,
+     gifts: []
    })
    localStorage.removeItem("token")
   }
