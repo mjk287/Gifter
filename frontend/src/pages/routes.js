@@ -5,11 +5,12 @@ import GiftsRoutes from './username/_gifts/routes'
 
 class Routes extends React.Component {
   render() {
+    console.log(this.props)
     return(
       <Switch>
         <Route
           path='/:username'
-          render={({match}) => <UsernameRoutes user={this.props.user} match={match}/>}
+          render={({match}) => <UsernameRoutes userObj={this.props.userObj} match={match}/>}
         />
 
       </Switch>

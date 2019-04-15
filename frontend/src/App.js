@@ -9,7 +9,8 @@ import { withRouter } from 'react-router-dom'
 class App extends Component {
 
   state = {
-    user: null
+    user: null,
+    gifts: []
   }
 
   handleSignup = (e, user) => {
@@ -32,7 +33,6 @@ class App extends Component {
   }
 
   handleLogin = (e, user) => {
-    console.log(user)
     e.preventDefault()
     fetch("http://localhost:3000/api/v1/login", {
       method: "POST",
@@ -46,7 +46,8 @@ class App extends Component {
       .then(userObj => {
         localStorage.setItem('token', userObj.jwt)
         this.setState({
-          user: userObj.user
+          user: userObj.user,
+          gifts: userObj.gifts
       }, () => this.props.history.push(`/${this.state.user.first_name}/gifts`))
     })
   }
@@ -54,7 +55,7 @@ class App extends Component {
   handleLogout = () => {
    this.setState({
      user: null
-   }, () => console.log(this.state.user))
+   })
    localStorage.removeItem("token")
   }
 
@@ -63,7 +64,7 @@ class App extends Component {
       <div>
         <NavComp user={this.state.user} handleLogout={this.handleLogout}/>
         { !!this.state.user ?
-          <Routes user={this.state.user}/>
+          <Routes userObj={this.state}/>
           :
           <LandingPage handleLogin={this.handleLogin} handleSignup={this.handleSignup} />
         }
@@ -83,8 +84,9 @@ class App extends Component {
       .then(res => res.json())
       .then(userJSON => {
         this.setState({
-          user: userJSON.user
-        }, () => console.log(this.state.user))
+          user: userJSON.user,
+          gifts: userJSON.gifts
+        })
       })
     }
   }
