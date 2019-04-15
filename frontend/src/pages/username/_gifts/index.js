@@ -1,4 +1,6 @@
 import React from 'react'
+import GiftCard from '../../../components/GiftCard'
+import { withRouter } from 'react-router-dom'
 
 class Gifts extends React.Component {
 
@@ -14,12 +16,12 @@ class Gifts extends React.Component {
   makeGifts = () => {
     return this.props.userObj.gifts.map(gift => {
       console.log(gift)
-      return (<li>{gift.sender_id}</li>)
+      return <GiftCard handleClick={this.handleClick} gift={gift} />
     })
   }
 
-  handleClick = () => {
-    
+  handleClick = (gift_id) => {
+    this.props.history.push(`gifts/${gift_id}`)
   }
 
   render () {
@@ -30,4 +32,4 @@ class Gifts extends React.Component {
   }
 }
 
-export default Gifts
+export default withRouter(Gifts)
