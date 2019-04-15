@@ -12,6 +12,7 @@ const NavComp = (props) => {
         to='/James/gifts/create'
       >Send a Gift
       </NavLink>
+      <NavLink to='/login'>Login </NavLink>
     </div>
   )
 }
