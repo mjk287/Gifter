@@ -60,9 +60,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <NavComp handleLogout={this.handleLogout}/>
+        <NavComp user={this.state.user} handleLogout={this.handleLogout}/>
         { !!this.state.user ?
-          <Routes />
+          <Routes user={this.state}/>
           :
           <LandingPage handleLogin={this.handleLogin} handleSignup={this.handleSignup} />
         }

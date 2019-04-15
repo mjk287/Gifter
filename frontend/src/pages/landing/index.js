@@ -1,6 +1,6 @@
 import React from 'react'
-import LoginPage from '../login/index'
-import SignupPage from '../signup/index'
+import LoginPage from '../../components/Login'
+import SignupPage from '../../components/Signup'
 
 const LandingPage = props => {
   return(

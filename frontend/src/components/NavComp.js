@@ -5,14 +5,13 @@ const NavComp = (props) => {
   return (
     <div>
       <NavLink
-        to='/'
+        to={props.user ?  `/${props.user.first_name}/gifts` : '/'}
         >Home
       </NavLink>
       <NavLink
-        to='/James/gifts/create'
+        to={props.user ?  `/${props.user.first_name}/gifts/create` : '/'}
       >Send a Gift
       </NavLink>
-      <NavLink to='/login'>Login </NavLink>
       <a onClick={props.handleLogout}>Logout </a>
     </div>
   )
