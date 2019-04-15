@@ -2,22 +2,35 @@ import React from 'react'
 
 class CreatePage extends React.Component {
   state = {
-    user: {
+    gift: {
       note: '',
       img: '',
-      sender_id: this.props.user.id,
+      sender_id: this.props.userObj.user.id,
       user_id: 0,
+      date: new Date()
     },
     users: []
   }
 
   handleChange = (e) => {
     this.setState({
-      user: {
-        ...this.state.user,
+      gift: {
+        ...this.state.gift,
         [e.target.name]: e.target.value
       }
-    }, () => console.log(this.state.user))
+    })
+  }
+
+  handleSubmit = (e, gift) => {
+    e.preventDefault()
+    fetch("http://localhost:3000/api/v1/gifts", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({...gift})
+    })
   }
 
   optionMap = () => {
@@ -28,13 +41,13 @@ class CreatePage extends React.Component {
     return(
       <div>
         <h1>Send Gift</h1>
-        <form>
+        <form onSubmit={(e) => this.handleSubmit(e, this.state.gift)}>
           <label htmlFor="note">Note</label>
           <input type='text' name='note' placeholder='Message' value={this.state.note} onChange={this.handleChange} required></input>
           <label htmlFor="img">Image URL</label>
           <input type='text' name='img' placeholder='Image URL' value={this.state.img} onChange={this.handleChange} required></input>
           <select name='user_id' onChange={this.handleChange}>{this.optionMap()}</select>
-          <p>From: <i>{this.props.user.first_name} {this.props.user.last_name}</i></p>
+          <p>From: <i>{this.props.userObj.user.first_name} {this.props.userObj.user.last_name}</i></p>
           <button>Send Gift</button>
         </form>
       </div>
@@ -45,7 +58,7 @@ class CreatePage extends React.Component {
     fetch('http://localhost:3000/api/v1/users')
       .then(res => res.json())
       .then(allUsers => {
-        const users = allUsers.filter(user => user.id != this.props.user.id)
+        const users = allUsers.filter(user => user.id != this.props.userObj.user.id)
         this.setState({
           users
         })

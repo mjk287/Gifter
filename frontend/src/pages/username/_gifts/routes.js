@@ -11,12 +11,12 @@ class GiftsRoutes extends React.Component {
         <Route
           exact
           path={`${this.props.match.url}/gifts`}
-          render={() => <Gifts user={this.props.user}/>}
+          render={() => <Gifts user={this.props.userObj}/>}
         />
         <Route
           exact
           path={`${this.props.match.url}/gifts/create`}
-          render={() => <CreatePage user={this.props.user}/>}
+          render={() => <CreatePage userObj={this.props.userObj} />}
         />
         <Route
           path={`${this.props.match.url}/gifts/:id`}
