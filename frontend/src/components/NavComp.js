@@ -13,6 +13,7 @@ const NavComp = (props) => {
       >Send a Gift
       </NavLink>
       <NavLink to='/login'>Login </NavLink>
+      <a onClick={props.handleLogout}>Logout </a>
     </div>
   )
 }

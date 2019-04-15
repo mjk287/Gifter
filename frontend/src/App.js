@@ -3,8 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Routes from './pages/routes'
 import NavComp from './components/NavComp'
-import LoginPage from './login/index'
-import SignupPage from './signup/index'
+import LandingPage from './pages/landing/index'
 
 class App extends Component {
 
@@ -12,7 +11,8 @@ class App extends Component {
     user: null
   }
 
-  handleSignup = user => {
+  handleSignup = (e, user) => {
+    e.preventDefault()
     fetch("http://localhost:3000/api/v1/users", {
       method: "POST",
       headers: {
@@ -23,12 +23,10 @@ class App extends Component {
     })
       .then(res => res.json())
       .then(userObj => {
+        localStorage.setItem('token', userObj.jwt)
         this.setState({
           user: userObj.user
-        }, () => {
-          localStorage.setItem("token", userObj.jwt)
-          console.log(this.state.user)
-        })
+      }, () => console.log(this.state.user))
       })
   }
 
@@ -47,7 +45,7 @@ class App extends Component {
       .then(userObj => {
         localStorage.setItem('token', userObj.jwt)
         this.setState({
-        user: userObj.user
+          user: userObj.user
       }, () => console.log(this.state.user))
     })
   }
@@ -62,15 +60,12 @@ class App extends Component {
   render() {
     return (
       <div>
-        <NavComp/>
-        <Route
-          exact path='/login'
-          render={() => <LoginPage handleLogin={this.props.handleLogin}/>}
-        />
-        <Route
-          exact path='/signup'
-          render={() => <SignupPage handleLogin={this.props.handleLogin}/>}
-        />
+        <NavComp handleLogout={this.handleLogout}/>
+        { !!this.state.user ?
+          <Routes />
+          :
+          <LandingPage handleLogin={this.handleLogin} handleSignup={this.handleSignup} />
+        }
       </div>
     );
   }

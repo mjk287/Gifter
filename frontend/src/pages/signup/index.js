@@ -19,7 +19,7 @@ class SignupPage extends Component {
     return(
       <div>
         <h1>Signup</h1>
-        <form onSubmit={() => this.props.handleSignup(this.state)}>
+        <form onSubmit={(e) => this.props.handleSignup(e, this.state)}>
           <label htmlFor='email'>Email</label>
           <input type='text' name='email' placeholder='Email' value={this.state.email} onChange={this.handleChange} required/>
           <label htmlFor='password'>Password</label>
