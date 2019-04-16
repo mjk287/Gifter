@@ -8,6 +8,7 @@ class CreatePage extends React.Component {
       sender_id: this.props.userObj.user.first_name,
       user_id: 0,
       date: new Date(),
+      image: null,
       song: ''
     },
     users: []
@@ -19,24 +20,36 @@ class CreatePage extends React.Component {
         ...this.state.gift,
         [e.target.name]: e.target.value
       }
-    }, () => console.log(this.state))
+    })
   }
 
   handleSubmit = (e, gift) => {
     e.preventDefault()
+
+    const data = new FormData()
+    Object.keys(this.state.gift).forEach((key, value) => {
+      data.append(key, this.state.gift[key])
+    })
+
     fetch("http://localhost:3000/api/v1/gifts", {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({...gift})
+      body: data
     })
     .then(res => res.json())
     .then(giftObj => {
       if(!!giftObj) {
         alert(`Gift Send To: ${giftObj.user.first_name}`)
       }
+    })
+  }
+
+  handleFileUploader = (e) => {
+    this.setState({
+      gift: {
+        ...this.state.gift,
+        image: e.target.files[0]
+      }
+
     })
   }
 
@@ -75,6 +88,7 @@ class CreatePage extends React.Component {
             <input className="uk-input uk-border-rounded" type='text' name='song' placeholder='Song URL' value={this.state.song} onChange={this.handleChange} required />
           </div>
         </div>
+        <input type='file' name='image' onChange={this.handleFileUploader} />
         <p>From: <i>{this.props.userObj.user.first_name} {this.props.userObj.user.last_name}</i></p>
         <button class="uk-button uk-button-primary uk-border-rounded">Send Gift</button>
       </form>

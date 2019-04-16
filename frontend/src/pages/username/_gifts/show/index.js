@@ -7,6 +7,7 @@ class ShowPage extends React.Component {
     img: '',
     user: null,
     song: '',
+    image: '',
     songOpen: false,
     noteOpen: false,
     imgOpen: false
@@ -41,6 +42,7 @@ class ShowPage extends React.Component {
         img: gift.img,
         user: gift.user,
         song: gift.song,
+        image: gift.image
       }, () => console.log(this.state))
     })
   }
@@ -75,7 +77,7 @@ class ShowPage extends React.Component {
         </ModalComp>
 
         <ModalComp show={this.state.imgOpen} title={'Their Picture'} close={this.closeShow}>
-          <img src={this.state.img} />
+          <img src={`http://localhost:3000/${this.state.image}`} />
         </ModalComp>
       </div>
     )
