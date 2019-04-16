@@ -6,17 +6,17 @@ const GiftCard = (props) => {
     console.log(props)
     if(props.gift.opened) {
       return (
-        <a>
-          <a onClick={() => props.handleClick(props.gift)}><img src={require("../img/open-box-with-two-hearts.png")} /></a>
-          <p>From: {props.gift.sender_id}, <i>({props.gift.date})</i></p>
-        </a>
+        <li onClick={() => props.handleClick(props.gift)}>
+          <img src={require("../img/open-box-with-two-hearts.png")} />
+            <p className='uk-position-center uk-panel'>From: {props.gift.sender_id}, <i>({props.gift.date})</i></p>
+        </li>
       )
     } else {
       return (
-        <a>
-          <a onClick={() => props.handleClick(props.gift)}><img src={require("../img/gift.png")} /></a>
-          <p>From: {props.gift.sender_id}, <i>({props.gift.date})</i></p>
-        </a>
+        <li onClick={() => props.handleClick(props.gift)}>
+          <img src={require("../img/gift.png")} />
+          <p className='uk-position-center uk-panel'>From: {props.gift.sender_id}, <i>({props.gift.date})</i></p>
+        </li>
       )
     }
   }
