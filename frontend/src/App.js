@@ -68,13 +68,11 @@ class App extends Component {
     return (
       <div>
         <NavComp user={this.state.user} handleLogout={this.handleLogout}/>
-        <div className='container'>
         { !!this.state.user ?
           <Routes userObj={this.state}/>
           :
           <LandingPage handleLogin={this.handleLogin} handleSignup={this.handleSignup} />
         }
-        </div>
       </div>
     );
   }
