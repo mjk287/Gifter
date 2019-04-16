@@ -15,14 +15,22 @@ class Gifts extends React.Component {
 
   makeGifts = () => {
     return this.props.userObj.gifts.map(gift => {
-      if(!gift.opened) {
         return <GiftCard handleClick={this.handleClick} gift={gift} />
-      }
     })
   }
 
-  handleClick = (gift_id) => {
-    this.props.history.push(`gifts/${gift_id}`)
+  handleClick = (gift) => {
+    if(!gift.opened) {
+      fetch(`http://localhost:3000/api/v1/gifts/${gift.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({ opened: true })
+      })
+    }
+      this.props.history.push(`gifts/${gift.id}`)
   }
 
   render () {

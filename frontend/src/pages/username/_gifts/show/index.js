@@ -33,14 +33,14 @@ class ShowPage extends React.Component {
   render(){
     return(
       <div>
-      { !!this.state.user &&
-        <h1>From: {this.state.user.first_name}</h1>
-      }
         <div id='showPageImage'>
           <div id='musicDiv' className='category'></div>
           <div id='journalDiv' className='category'></div>
           <div id='pictureDiv' className='category'></div>
         </div>
+        { !!this.state.user &&
+          <h1>From: {this.state.user.first_name}</h1>
+        }
 
         <ModalComp />
         <p>{this.state.note}</p>
