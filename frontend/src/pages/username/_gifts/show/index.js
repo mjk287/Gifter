@@ -1,11 +1,15 @@
 import React from 'react'
+import ModalComp from '../../../../components/ModalComp'
 
 class ShowPage extends React.Component {
   state = {
     note: '',
     img: '',
     user: null,
-    song: ''
+    song: '',
+    songOpen: false,
+    noteOpen: false,
+    imgOpen: false
   }
 
   embedMusic = (input) => {
@@ -32,6 +36,13 @@ class ShowPage extends React.Component {
       { !!this.state.user &&
         <h1>From: {this.state.user.first_name}</h1>
       }
+        <div id='showPageImage'>
+          <div id='musicDiv' className='category'></div>
+          <div id='journalDiv' className='category'></div>
+          <div id='pictureDiv' className='category'></div>
+        </div>
+
+        <ModalComp />
         <p>{this.state.note}</p>
         <img src={this.state.img} />
         <iframe width="0" height="0" allow="autoplay" src={this.embedMusic(this.state.song)}></iframe>
