@@ -52,14 +52,20 @@ class ShowPage extends React.Component {
         <h1>From: {this.state.user.first_name}</h1>
       }
         <div id='showPageImage'>
+          <div className='categoryContainer'>
           <div onClick={this.showModal} id='musicDiv' className='category songOpen'></div>
-          <div onClick={this.showModal} id='journalDiv' className='category noteOpen'></div>
-          <div onClick={this.showModal} id='pictureDiv' className='category imgOpen'></div>
+            </div>
+          <div className='categoryContainer'>
+            <div onClick={this.showModal} id='journalDiv' className='category noteOpen'></div>
+          </div>
+          <div className='categoryContainer'>
+            <div onClick={this.showModal} id='pictureDiv' className='category imgOpen'></div>
+          </div>
         </div>
 
         <ModalComp show={this.state.songOpen} close={this.closeShow}>
           <div className='horizontalCenter'>
-            <img id='musicModalImg' src='https://i.pinimg.com/originals/45/12/38/45123832c8e668bc14f27d8ad96a581b.gif' />
+            <img id='musicModalImg' src={require('../../../../assets/listeningToMusic2.gif')} />
           </div>
           <iframe width="0" height="0" allow="autoplay" src={this.embedMusic(this.state.song)}></iframe>
         </ModalComp>

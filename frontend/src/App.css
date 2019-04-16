@@ -3,13 +3,19 @@
    width: 75%;
    height: 200px;
    margin: 150px auto; /* Half the height */
-
+   text-align: center;
 }
 
 .category {
+
+}
+
+.categoryContainer {
+  position: relative;
   width: 75%;
   height: 100%;
   background-size: cover;
+  text-align: center;
 }
 
 .horizontalCenter {
@@ -17,14 +23,22 @@
 }
 
 #musicDiv{
-  background: url('./assets/backgroundShow2Transparent.png') no-repeat -360px -132px;
+  position: absolute;
+  background: url('./assets/backgroundShow2Transparent.png') no-repeat -398px -141px;
+  width: 193px;
+	height: 160px;
 }
 
 #journalDiv{
-  background: url('./assets/backgroundShow2Transparent.png') no-repeat -765px -132px;
-
+  position: absolute;
+  background: url('./assets/backgroundShow2Transparent.png') no-repeat -778px -139px;
+  width: 240px;
+	height: 181px;
 }
 
 #pictureDiv{
-  background: url('./assets/backgroundShow2Transparent.png') no-repeat -1210px -132px;
+  position: absolute;
+  background: url('./assets/backgroundShow2Transparent.png') no-repeat -1239px -153px;
+  width: 214px;
+	height: 153px;
 }
