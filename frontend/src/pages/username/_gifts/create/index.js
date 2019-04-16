@@ -4,7 +4,6 @@ class CreatePage extends React.Component {
   state = {
     gift: {
       note: '',
-      img: '',
       sender_id: this.props.userObj.user.first_name,
       user_id: 0,
       date: new Date(),
@@ -74,12 +73,6 @@ class CreatePage extends React.Component {
           <div className="uk-inline">
             <span className="uk-form-icon uk-form-icon-flip" uk-icon="icon: pencil"></span>
             <input className="uk-input uk-border-rounded" type='text' name='note' placeholder='Message' value={this.state.note} onChange={this.handleChange} required />
-          </div>
-        </div>
-        <div className="uk-margin">
-          <div className="uk-inline">
-            <span className="uk-form-icon uk-form-icon-flip" uk-icon="icon: image"></span>
-            <input className="uk-input uk-border-rounded" type='text' name='img' placeholder='Image URL' value={this.state.img} onChange={this.handleChange} required />
           </div>
         </div>
         <div className="uk-margin">

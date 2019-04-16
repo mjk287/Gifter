@@ -4,7 +4,6 @@ import ModalComp from '../../../../components/ModalComp'
 class ShowPage extends React.Component {
   state = {
     note: '',
-    img: '',
     user: null,
     song: '',
     image: '',
@@ -39,7 +38,6 @@ class ShowPage extends React.Component {
     .then(gift => {
       this.setState({
         note: gift.note,
-        img: gift.img,
         user: gift.user,
         song: gift.song,
         image: gift.image
