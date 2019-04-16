@@ -15,7 +15,7 @@ class Gifts extends React.Component {
 
   makeGifts = () => {
     return this.props.userObj.gifts.map(gift => {
-      if(gift.opened) {
+      if(!gift.opened) {
         return <GiftCard handleClick={this.handleClick} gift={gift} />
       }
     })

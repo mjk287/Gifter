@@ -19,7 +19,7 @@ class CreatePage extends React.Component {
         ...this.state.gift,
         [e.target.name]: e.target.value
       }
-    })
+    }, () => console.log(this.state))
   }
 
   handleSubmit = (e, gift) => {
@@ -44,7 +44,7 @@ class CreatePage extends React.Component {
         <h1>Send Gift</h1>
         <div className="uk-margin">
           <div className="uk-inline uk-form-controls">
-            <select className="uk-select" id="form-stacked-select">
+            <select className="uk-select" id="form-stacked-select" name='user_id' onChange={this.handleChange}>
               <option selected disabled>Send To:</option>
               {this.optionMap()}
             </select>
