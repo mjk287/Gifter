@@ -2,7 +2,7 @@
     display: flex;
    width: 75%;
    height: 200px;
-   margin: 150px auto; /* Half the height */
+   margin: 35vh auto; /* Half the height */
    text-align: center;
 }
 
@@ -11,7 +11,6 @@
 }
 
 .categoryContainer {
-  position: relative;
   width: 75%;
   height: 100%;
   background-size: cover;
@@ -23,22 +22,35 @@
 }
 
 #musicDiv{
-  position: absolute;
   background: url('./assets/backgroundShow2Transparent.png') no-repeat -398px -141px;
   width: 193px;
 	height: 160px;
+  margin: auto
 }
 
 #journalDiv{
-  position: absolute;
   background: url('./assets/backgroundShow2Transparent.png') no-repeat -778px -139px;
   width: 240px;
 	height: 181px;
+  margin: auto;
 }
 
 #pictureDiv{
-  position: absolute;
   background: url('./assets/backgroundShow2Transparent.png') no-repeat -1239px -153px;
   width: 214px;
 	height: 153px;
+  margin:auto;
+}
+
+#heartLogo{
+  max-width: 150px;
+  max-height: 150px
+}
+
+#from {
+    font-family: 'Pacifico', cursive;
+     position: fixed;
+     bottom: 0;
+     right: 0;
+     padding-right: 5vw;
 }

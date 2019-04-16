@@ -18,6 +18,7 @@ class SignupPage extends Component {
   render() {
     return(
       <form className='uk-text-center' onSubmit={(e) => this.props.handleSignup(e, this.state)}>
+        <img id='heartLogo' src={require('../assets/heartLogoFinal.gif')}/>
         <h1>Signup</h1>
         <div className="uk-margin">
           <div className="uk-inline">

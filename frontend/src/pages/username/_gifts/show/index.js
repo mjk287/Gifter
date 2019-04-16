@@ -60,21 +60,21 @@ class ShowPage extends React.Component {
           </div>
         </div>
         { !!this.state.user &&
-          <h1>From: {this.state.user.first_name}</h1>
+          <h1 id='from'>From: {this.state.user.first_name}</h1>
         }
 
-        <ModalComp show={this.state.songOpen} close={this.closeShow}>
+        <ModalComp show={this.state.songOpen} title={'Their Song'} close={this.closeShow}>
           <div className='horizontalCenter'>
             <img id='musicModalImg' src={require('../../../../assets/listeningToMusic2.gif')} />
           </div>
           <iframe width="0" height="0" allow="autoplay" src={this.embedMusic(this.state.song)}></iframe>
         </ModalComp>
 
-        <ModalComp show={this.state.noteOpen} close={this.closeShow}>
+        <ModalComp show={this.state.noteOpen} title={'Their Note'} close={this.closeShow}>
           {this.state.note}
         </ModalComp>
 
-        <ModalComp show={this.state.imgOpen} close={this.closeShow}>
+        <ModalComp show={this.state.imgOpen} title={'Their Picture'} close={this.closeShow}>
           <img src={this.state.img} />
         </ModalComp>
       </div>
