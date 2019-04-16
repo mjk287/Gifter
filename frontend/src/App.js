@@ -23,13 +23,13 @@ class App extends Component {
       },
       body: JSON.stringify(user)
     })
-      .then(res => res.json())
-      .then(userObj => {
-        localStorage.setItem('token', userObj.jwt)
-        this.setState({
-          user: userObj.user
-      }, () => this.props.history.push(`/${this.state.user.first_name}/gifts`))
-      })
+    .then(res => res.json())
+    .then(userObj => {
+      localStorage.setItem('token', userObj.jwt)
+      this.setState({
+        user: userObj.user
+    }, () => this.props.history.push(`/${this.state.user.first_name}/gifts`))
+    })
   }
 
   handleLogin = (e, user) => {
@@ -42,13 +42,17 @@ class App extends Component {
       },
       body: JSON.stringify(user)
     })
-      .then(res => res.json())
-      .then(userObj => {
+    .then(res => res.json())
+    .then(userObj => {
+      if(!!userObj.message) {
+        alert(userObj.message)
+      } else {
         localStorage.setItem('token', userObj.jwt)
         this.setState({
           user: userObj.user,
           gifts: userObj.gifts
-      }, () => this.props.history.push(`/${this.state.user.first_name}/gifts`))
+        }, () => this.props.history.push(`/${this.state.user.first_name}/gifts`))
+      }
     })
   }
 

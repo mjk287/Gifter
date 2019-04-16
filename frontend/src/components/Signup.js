@@ -17,22 +17,39 @@ class SignupPage extends Component {
 
   render() {
     return(
-      <div>
+      <form onSubmit={(e) => this.props.handleSignup(e, this.state)}>
         <h1>Signup</h1>
-        <form onSubmit={(e) => this.props.handleSignup(e, this.state)}>
-          <label htmlFor='email'>Email</label>
-          <input type='text' name='email' placeholder='Email' value={this.state.email} onChange={this.handleChange} required/>
-          <label htmlFor='password'>Password</label>
-          <input type='password' name='password' placeholder='Password' value={this.state.password} onChange={this.handleChange} required/>
-          <label htmlFor='password_confirmation'>Confirm Password</label>
-          <input type='password' name='password_confirmation' placeholder='Confirm Password' value={this.state.password_confirmation} onChange={this.handleChange} required/>
-          <label htmlFor='first_name'>First Name</label>
-          <input type='text' name='first_name' placeholder='First Name' value={this.state.first_name} onChange={this.handleChange} required/>
-          <label htmlFor='last_name'>Last Name</label>
-          <input type='text' name='last_name' placeholder='Last Name' value={this.state.last_name} onChange={this.handleChange} required/>
-          <button>Signup</button>
-        </form>
-      </div>
+        <div className="uk-margin">
+          <div className="uk-inline">
+            <span className="uk-form-icon" uk-icon="icon: user"></span>
+            <input className="uk-input" type='text' name='email' placeholder='Email' value={this.state.email} onChange={this.handleChange} required />
+          </div>
+        </div>
+        <div className="uk-margin">
+          <div className="uk-inline">
+            <span className="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
+            <input className="uk-input" type='password' name='password' placeholder='Password' value={this.state.password} onChange={this.handleChange} required />
+          </div>
+        </div>
+        <div className="uk-margin">
+          <div className="uk-inline">
+            <span className="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
+            <input className="uk-input" type='password' name='password_confirmation' placeholder='Confirm Password' value={this.state.password_confirmation} onChange={this.handleChange} required />
+          </div>
+        </div>
+        <div className="uk-margin">
+          <div className="uk-inline">
+            <span className="uk-form-icon uk-form-icon-flip" uk-icon="icon: blank"></span>
+            <input className="uk-input" type='text' name='first_name' placeholder='First Name' value={this.state.first_name} onChange={this.handleChange} required />
+          </div>
+        </div><div className="uk-margin">
+          <div className="uk-inline">
+            <span className="uk-form-icon uk-form-icon-flip" uk-icon="icon: blank"></span>
+            <input className="uk-input" type='text' name='last_name' placeholder='Last Name' value={this.state.last_name} onChange={this.handleChange} required />
+          </div>
+        </div>
+        <button class="uk-button uk-button-primary">Signup</button>
+      </form>
     )
   }
 }

@@ -14,16 +14,22 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div>
+      <form onSubmit={(e) => this.props.handleLogin(e, this.state)}>
         <h1>Login</h1>
-        <form onSubmit={(e) => this.props.handleLogin(e, this.state)}>
-          <label htmlFor='email'>Email</label>
-          <input type='text' name='email' placeholder='Email' value={this.state.email} onChange={this.handleChange} required/>
-          <label htmlFor='password'>Password</label>
-          <input type='password' name='password' placeholder='Password' value={this.state.password} onChange={this.handleChange} required/>
-          <button>Login</button>
-        </form>
-      </div>
+        <div className="uk-margin">
+          <div className="uk-inline">
+            <span className="uk-form-icon" uk-icon="icon: user"></span>
+            <input className="uk-input" type='text' name='email' placeholder='Email' value={this.state.email} onChange={this.handleChange} required />
+          </div>
+        </div>
+        <div className="uk-margin">
+          <div className="uk-inline">
+            <span className="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
+            <input className="uk-input" type='password' name='password' placeholder='Password' value={this.state.password} onChange={this.handleChange} required />
+          </div>
+        </div>
+        <button className="uk-button uk-button-primary">Login</button>
+      </form>
     );
   }
 }

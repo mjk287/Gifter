@@ -19,7 +19,7 @@ class CreatePage extends React.Component {
         ...this.state.gift,
         [e.target.name]: e.target.value
       }
-    })
+    }, () => console.log(this.state))
   }
 
   handleSubmit = (e, gift) => {
@@ -40,20 +40,37 @@ class CreatePage extends React.Component {
 
   render(){
     return(
-      <div>
+      <form onSubmit={(e) => this.handleSubmit(e, this.state.gift)}>
         <h1>Send Gift</h1>
-        <form onSubmit={(e) => this.handleSubmit(e, this.state.gift)}>
-          <label htmlFor="note">Note</label>
-          <input type='text' name='note' placeholder='Message' value={this.state.note} onChange={this.handleChange} required></input>
-          <label htmlFor="img">Image URL</label>
-          <input type='text' name='img' placeholder='Image URL' value={this.state.img} onChange={this.handleChange} required></input>
-          <label htmlFor="song">Song URL</label>
-          <input type='text' name='song' placeholder='Song URL' value={this.state.song} onChange={this.handleChange} required></input>
-          <select name='user_id' onChange={this.handleChange}>{this.optionMap()}</select>
-          <p>From: <i>{this.props.userObj.user.first_name} {this.props.userObj.user.last_name}</i></p>
-          <button>Send Gift</button>
-        </form>
-      </div>
+        <div className="uk-margin">
+          <div className="uk-inline uk-form-controls">
+            <select className="uk-select" id="form-stacked-select" name='user_id' onChange={this.handleChange}>
+              <option selected disabled>Send To:</option>
+              {this.optionMap()}
+            </select>
+          </div>
+        </div>
+        <div className="uk-margin">
+          <div className="uk-inline">
+            <span className="uk-form-icon uk-form-icon-flip" uk-icon="icon: pencil"></span>
+            <input className="uk-input" type='text' name='note' placeholder='Message' value={this.state.note} onChange={this.handleChange} required />
+          </div>
+        </div>
+        <div className="uk-margin">
+          <div className="uk-inline">
+            <span className="uk-form-icon uk-form-icon-flip" uk-icon="icon: image"></span>
+            <input className="uk-input" type='text' name='img' placeholder='Image URL' value={this.state.img} onChange={this.handleChange} required />
+          </div>
+        </div>
+        <div className="uk-margin">
+          <div className="uk-inline">
+            <span className="uk-form-icon uk-form-icon-flip" uk-icon="icon: youtube"></span>
+            <input className="uk-input" type='text' name='song' placeholder='Song URL' value={this.state.song} onChange={this.handleChange} required />
+          </div>
+        </div>
+        <p>From: <i>{this.props.userObj.user.first_name} {this.props.userObj.user.last_name}</i></p>
+        <button class="uk-button uk-button-primary">Send Gift</button>
+      </form>
     )
   }
 
