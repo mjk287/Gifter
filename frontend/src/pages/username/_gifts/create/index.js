@@ -32,6 +32,12 @@ class CreatePage extends React.Component {
       },
       body: JSON.stringify({...gift})
     })
+    .then(res => res.json())
+    .then(giftObj => {
+      if(!!giftObj) {
+        alert(`Gift Send To: ${giftObj.user.first_name}`)
+      }
+    })
   }
 
   optionMap = () => {

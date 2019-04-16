@@ -36,7 +36,7 @@ class Gifts extends React.Component {
   render () {
     console.log(this.props.userObj.gifts)
     return (
-      <div>{!!this.props.userObj.gifts && this.makeGifts()}</div>
+      <div className='uk-text-center'>{!!this.props.userObj.gifts && this.makeGifts()}</div>
     )
   }
 }
