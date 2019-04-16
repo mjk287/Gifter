@@ -48,9 +48,6 @@ class ShowPage extends React.Component {
   render(){
     return(
       <div>
-      { !!this.state.user &&
-        <h1>From: {this.state.user.first_name}</h1>
-      }
         <div id='showPageImage'>
           <div className='categoryContainer'>
           <div onClick={this.showModal} id='musicDiv' className='category songOpen'></div>
@@ -62,6 +59,9 @@ class ShowPage extends React.Component {
             <div onClick={this.showModal} id='pictureDiv' className='category imgOpen'></div>
           </div>
         </div>
+        { !!this.state.user &&
+          <h1>From: {this.state.user.first_name}</h1>
+        }
 
         <ModalComp show={this.state.songOpen} close={this.closeShow}>
           <div className='horizontalCenter'>

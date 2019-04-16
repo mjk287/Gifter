@@ -4,9 +4,10 @@ import SignupPage from '../../components/Signup'
 
 const LandingPage = props => {
   return(
-    <div className='uk-column-1-2 uk-column-divider'>
-      <LoginPage handleLogin={props.handleLogin} />
+    <div>
       <SignupPage handleSignup={props.handleSignup} />
+      <hr/>
+      <LoginPage handleLogin={props.handleLogin} />
     </div>
   )
 }

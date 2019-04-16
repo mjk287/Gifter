@@ -40,11 +40,12 @@ class CreatePage extends React.Component {
 
   render(){
     return(
+      <div className='uk-text-center uk-border-rounded'>
       <form onSubmit={(e) => this.handleSubmit(e, this.state.gift)}>
         <h1>Send Gift</h1>
         <div className="uk-margin">
           <div className="uk-inline uk-form-controls">
-            <select className="uk-select" id="form-stacked-select" name='user_id' onChange={this.handleChange}>
+            <select className="uk-select uk-border-rounded" id="form-stacked-select" name='user_id' onChange={this.handleChange}>
               <option selected disabled>Send To:</option>
               {this.optionMap()}
             </select>
@@ -53,24 +54,25 @@ class CreatePage extends React.Component {
         <div className="uk-margin">
           <div className="uk-inline">
             <span className="uk-form-icon uk-form-icon-flip" uk-icon="icon: pencil"></span>
-            <input className="uk-input" type='text' name='note' placeholder='Message' value={this.state.note} onChange={this.handleChange} required />
+            <input className="uk-input uk-border-rounded" type='text' name='note' placeholder='Message' value={this.state.note} onChange={this.handleChange} required />
           </div>
         </div>
         <div className="uk-margin">
           <div className="uk-inline">
             <span className="uk-form-icon uk-form-icon-flip" uk-icon="icon: image"></span>
-            <input className="uk-input" type='text' name='img' placeholder='Image URL' value={this.state.img} onChange={this.handleChange} required />
+            <input className="uk-input uk-border-rounded" type='text' name='img' placeholder='Image URL' value={this.state.img} onChange={this.handleChange} required />
           </div>
         </div>
         <div className="uk-margin">
           <div className="uk-inline">
             <span className="uk-form-icon uk-form-icon-flip" uk-icon="icon: youtube"></span>
-            <input className="uk-input" type='text' name='song' placeholder='Song URL' value={this.state.song} onChange={this.handleChange} required />
+            <input className="uk-input uk-border-rounded" type='text' name='song' placeholder='Song URL' value={this.state.song} onChange={this.handleChange} required />
           </div>
         </div>
         <p>From: <i>{this.props.userObj.user.first_name} {this.props.userObj.user.last_name}</i></p>
-        <button class="uk-button uk-button-primary">Send Gift</button>
+        <button class="uk-button uk-button-primary uk-border-rounded">Send Gift</button>
       </form>
+      </div>
     )
   }
 
