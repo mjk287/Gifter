@@ -17,6 +17,21 @@ class ShowPage extends React.Component {
   return `https://www.youtube.com/embed/${videoId}?autoplay=1`
 }
 
+  showModal = (e) => {
+
+    this.setState({
+      [e.target.classList[1]]: true
+    })
+  }
+
+  closeShow = () => {
+    this.setState({
+      songOpen: false,
+      noteOpen: false,
+      imgOpen: false
+    })
+  }
+
   componentDidMount() {
     fetch(`http://localhost:3000/api/v1/gifts/${this.props.id}`)
     .then(resp => resp.json())
@@ -37,15 +52,25 @@ class ShowPage extends React.Component {
         <h1>From: {this.state.user.first_name}</h1>
       }
         <div id='showPageImage'>
-          <div id='musicDiv' className='category'></div>
-          <div id='journalDiv' className='category'></div>
-          <div id='pictureDiv' className='category'></div>
+          <div onClick={this.showModal} id='musicDiv' className='category songOpen'></div>
+          <div onClick={this.showModal} id='journalDiv' className='category noteOpen'></div>
+          <div onClick={this.showModal} id='pictureDiv' className='category imgOpen'></div>
         </div>
 
-        <ModalComp />
-        <p>{this.state.note}</p>
-        <img src={this.state.img} />
-        <iframe width="0" height="0" allow="autoplay" src={this.embedMusic(this.state.song)}></iframe>
+        <ModalComp show={this.state.songOpen} close={this.closeShow}>
+          <div className='horizontalCenter'>
+            <img id='musicModalImg' src='https://i.pinimg.com/originals/45/12/38/45123832c8e668bc14f27d8ad96a581b.gif' />
+          </div>
+          <iframe width="0" height="0" allow="autoplay" src={this.embedMusic(this.state.song)}></iframe>
+        </ModalComp>
+
+        <ModalComp show={this.state.noteOpen} close={this.closeShow}>
+          {this.state.note}
+        </ModalComp>
+
+        <ModalComp show={this.state.imgOpen} close={this.closeShow}>
+          <img src={this.state.img} />
+        </ModalComp>
       </div>
     )
   }
