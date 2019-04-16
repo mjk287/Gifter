@@ -3,7 +3,11 @@
 }
 
 #slider {
-  background-color: black
+  color: black
+}
+
+#slider-div {
+  margin-top: 20vw
 }
 
 
