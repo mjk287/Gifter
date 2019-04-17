@@ -1,14 +1,16 @@
 import React from 'react'
+import UIkit from 'uikit'
 
 class CreatePage extends React.Component {
   state = {
     gift: {
       note: '',
-      img: '',
       sender_id: this.props.userObj.user.first_name,
       user_id: 0,
       date: new Date(),
-      song: ''
+      image: null,
+      song: '',
+      preview: null,
     },
     users: []
   }
@@ -19,18 +21,20 @@ class CreatePage extends React.Component {
         ...this.state.gift,
         [e.target.name]: e.target.value
       }
-    }, () => console.log(this.state))
+    })
   }
 
   handleSubmit = (e, gift) => {
     e.preventDefault()
+
+    const data = new FormData()
+    Object.keys(this.state.gift).forEach((key, value) => {
+      data.append(key, this.state.gift[key])
+    })
+
     fetch("http://localhost:3000/api/v1/gifts", {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({...gift})
+      body: data
     })
     .then(res => res.json())
     .then(giftObj => {
@@ -40,6 +44,17 @@ class CreatePage extends React.Component {
         alert('Please choose a recipient')
       }
     })
+  }
+
+  handleFileUploader = (e) => {
+    this.setState({
+      gift: {
+        ...this.state.gift,
+        image: e.target.files[0],
+        preview: URL.createObjectURL(e.target.files[0])
+      }
+
+    }, () => console.log(this.state.gift))
   }
 
   optionMap = () => {
@@ -53,7 +68,7 @@ class CreatePage extends React.Component {
         <h1>Send Gift</h1>
         <div className="uk-margin">
           <div className="uk-inline uk-form-controls">
-            <select className="uk-select uk-border-rounded" id="form-stacked-select" name='user_id' onChange={this.handleChange}>
+            <select className="uk-select uk-border-rounded" id="form-stacked-select" name='user_id' onChange={this.handleChange} required>
               <option selected disabled>Send To:</option>
               {this.optionMap()}
             </select>
@@ -67,16 +82,24 @@ class CreatePage extends React.Component {
         </div>
         <div className="uk-margin">
           <div className="uk-inline">
-            <span className="uk-form-icon uk-form-icon-flip" uk-icon="icon: image"></span>
-            <input className="uk-input uk-border-rounded" type='text' name='img' placeholder='Image URL' value={this.state.img} onChange={this.handleChange} required />
-          </div>
-        </div>
-        <div className="uk-margin">
-          <div className="uk-inline">
             <span className="uk-form-icon uk-form-icon-flip" uk-icon="icon: youtube"></span>
             <input className="uk-input uk-border-rounded" type='text' name='song' placeholder='Song URL' value={this.state.song} onChange={this.handleChange} required />
           </div>
         </div>
+
+        <div className="js-upload uk-placeholder uk-text-center">
+          <span uk-icon="icon: cloud-upload"></span>
+          <span className="uk-text-middle">&nbsp;Place a photo or drawing here by</span>
+          <div uk-form-custom>
+            <label id='fileUploaderLabel' className="uk-link">&nbsp;selecting one
+            <input type='file' name='image' onChange={this.handleFileUploader} required />
+            {!!this.state.gift.preview &&
+              <img className='uk-border-rounded' id='imgPreview' src={this.state.gift.preview}/>}
+            </label>
+          </div>
+        </div>
+
+
         <p className='gift-text'>From: <i>{this.props.userObj.user.first_name} {this.props.userObj.user.last_name}</i></p>
         <button class="uk-button uk-button-primary uk-border-rounded">Send Gift</button>
       </form>
