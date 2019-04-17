@@ -75,7 +75,7 @@ class CreatePage extends React.Component {
             <input className="uk-input uk-border-rounded" type='text' name='song' placeholder='Song URL' value={this.state.song} onChange={this.handleChange} required />
           </div>
         </div>
-        <p>From: <i>{this.props.userObj.user.first_name} {this.props.userObj.user.last_name}</i></p>
+        <p className='gift-text'>From: <i>{this.props.userObj.user.first_name} {this.props.userObj.user.last_name}</i></p>
         <button class="uk-button uk-button-primary uk-border-rounded">Send Gift</button>
       </form>
       </div>
