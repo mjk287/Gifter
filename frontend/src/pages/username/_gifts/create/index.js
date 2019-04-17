@@ -34,8 +34,10 @@ class CreatePage extends React.Component {
     })
     .then(res => res.json())
     .then(giftObj => {
-      if(!!giftObj) {
+      if(!!giftObj.user.first_name) {
         alert(`Gift Send To: ${giftObj.user.first_name}`)
+      } else {
+        alert('Please choose a recipient')
       }
     })
   }
