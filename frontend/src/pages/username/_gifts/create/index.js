@@ -66,7 +66,7 @@ class CreatePage extends React.Component {
         <h1>Send Gift</h1>
         <div className="uk-margin">
           <div className="uk-inline uk-form-controls">
-            <select className="uk-select uk-border-rounded" id="form-stacked-select" name='user_id' onChange={this.handleChange}>
+            <select className="uk-select uk-border-rounded" id="form-stacked-select" name='user_id' onChange={this.handleChange} required>
               <option selected disabled>Send To:</option>
               {this.optionMap()}
             </select>
@@ -87,12 +87,12 @@ class CreatePage extends React.Component {
 
         <div className="js-upload uk-placeholder uk-text-center">
           <span uk-icon="icon: cloud-upload"></span>
-          <span className="uk-text-middle">Place a photo or drawing here by</span>
+          <span className="uk-text-middle">&nbsp;Place a photo or drawing here by</span>
           <div uk-form-custom>
             <label id='fileUploaderLabel' className="uk-link">&nbsp;selecting one
-            <input type='file' name='image' onChange={this.handleFileUploader} />
+            <input type='file' name='image' onChange={this.handleFileUploader} required />
             {!!this.state.gift.preview &&
-              <img id='imgPreview' src={this.state.gift.preview}/>}
+              <img className='uk-border-rounded' id='imgPreview' src={this.state.gift.preview}/>}
             </label>
           </div>
         </div>
