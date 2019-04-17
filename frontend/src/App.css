@@ -68,4 +68,9 @@ input[type='file']{
   width: 100px;
   height: 100px;
   object-fit: cover;
+
+}
+
+.gift-text {
+  font-family: 'Pacifico', cursive;
 }

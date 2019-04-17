@@ -98,7 +98,7 @@ class CreatePage extends React.Component {
         </div>
 
 
-        <p>From: <i>{this.props.userObj.user.first_name} {this.props.userObj.user.last_name}</i></p>
+        <p className='gift-text'>From: <i>{this.props.userObj.user.first_name} {this.props.userObj.user.last_name}</i></p>
         <button class="uk-button uk-button-primary uk-border-rounded">Send Gift</button>
       </form>
       </div>
