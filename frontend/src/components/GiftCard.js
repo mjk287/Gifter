@@ -14,7 +14,7 @@ const GiftCard = (props) => {
     } else {
       return (
         <li className='uk-text-center'>
-          <img src={require("../img/gift.png")} onClick={() => props.handleClick(props.gift)}/>
+          <img className='gift-box' src={require("../img/gift.png")} onClick={() => props.handleClick(props.gift)}/>
           <hr />
           <p className='uk-panel gift-text'>From: {props.gift.sender_id}, <i>({props.gift.date})</i></p>
         </li>

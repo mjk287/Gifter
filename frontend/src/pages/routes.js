@@ -8,6 +8,11 @@ class Routes extends React.Component {
     return(
       <Switch>
         <Route
+          exact
+          path='/'
+          render={() => <Redirect to={`${this.props.userObj.user.first_name}/gifts`} />}
+        />
+        <Route
           path='/:username'
           render={({match}) => <UsernameRoutes userObj={this.props.userObj} match={match}/>}
         />
