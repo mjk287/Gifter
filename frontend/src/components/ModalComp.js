@@ -6,7 +6,7 @@ class ModalComp extends React.Component {
     return(
       <Modal show={this.props.show} onHide={this.props.close}>
           <Modal.Header closeButton>
-            <Modal.Title>Modal title</Modal.Title>
+            <Modal.Title>{this.props.title}</Modal.Title>
           </Modal.Header>
 
           <Modal.Body>

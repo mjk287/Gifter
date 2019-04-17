@@ -4,7 +4,7 @@ import ModalComp from '../../../../components/ModalComp'
 class ShowPage extends React.Component {
   state = {
     note: '',
-    user: null,
+    sender: null,
     song: '',
     image: '',
     songOpen: false,
@@ -38,7 +38,7 @@ class ShowPage extends React.Component {
     .then(gift => {
       this.setState({
         note: gift.note,
-        user: gift.user,
+        sender: gift.sender_id,
         song: gift.song,
         image: gift.image
       }, () => console.log(this.state))
@@ -59,9 +59,7 @@ class ShowPage extends React.Component {
             <div onClick={this.showModal} id='pictureDiv' className='category imgOpen'></div>
           </div>
         </div>
-        { !!this.state.user &&
-          <h1 id='from'>From: {this.state.user.first_name}</h1>
-        }
+          <h1 id='from'>From: {this.state.sender}</h1>
 
         <ModalComp show={this.state.songOpen} title={'Their Song'} close={this.closeShow}>
           <div className='horizontalCenter'>
