@@ -65,13 +65,14 @@ class App extends Component {
   }
 
   render() {
+    console.log(localStorage.getItem('token'))
     return (
       <div>
         <NavComp user={this.state.user} handleLogout={this.handleLogout}/>
         { !!this.state.user ?
           <Routes userObj={this.state}/>
           :
-          <LandingPage handleLogin={this.handleLogin} handleSignup={this.handleSignup} />
+          !localStorage.getItem('token') && <LandingPage handleLogin={this.handleLogin} handleSignup={this.handleSignup} />
         }
       </div>
     );
@@ -97,4 +98,4 @@ class App extends Component {
   }
 }
 
-export default withRouter (App);
+export default withRouter(App);

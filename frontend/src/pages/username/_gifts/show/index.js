@@ -41,7 +41,7 @@ class ShowPage extends React.Component {
         sender: gift.sender_id,
         song: gift.song,
         image: gift.image
-      }, () => console.log(this.state))
+      })
     })
   }
 

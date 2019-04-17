@@ -54,7 +54,7 @@ class CreatePage extends React.Component {
         preview: URL.createObjectURL(e.target.files[0])
       }
 
-    }, () => console.log(this.state.gift))
+    })
   }
 
   optionMap = () => {

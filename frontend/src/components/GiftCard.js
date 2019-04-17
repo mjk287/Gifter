@@ -3,7 +3,6 @@ import React from 'react'
 const GiftCard = (props) => {
 
   function displayImg() {
-    console.log(props)
     if(props.gift.opened) {
       return (
         <li className='uk-text-center'>

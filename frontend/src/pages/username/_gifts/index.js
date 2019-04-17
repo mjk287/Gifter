@@ -34,7 +34,6 @@ class Gifts extends React.Component {
   }
 
   render () {
-    console.log(this.props.userObj.gifts)
     return (
       <div id='slider-div' className="uk-position-relative uk-visible-toggle uk-light" data-tabindex="-1" data-uk-slider>
         <ul className="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-3@m">
