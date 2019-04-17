@@ -87,7 +87,7 @@ class CreatePage extends React.Component {
 
         <div className="js-upload uk-placeholder uk-text-center">
           <span uk-icon="icon: cloud-upload"></span>
-          <span className="uk-text-middle">Place a photo or drawing here or by</span>
+          <span className="uk-text-middle">Place a photo or drawing here by</span>
           <div uk-form-custom>
             <label id='fileUploaderLabel' className="uk-link">&nbsp;selecting one
             <input type='file' name='image' onChange={this.handleFileUploader} />
