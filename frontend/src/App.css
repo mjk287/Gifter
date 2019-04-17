@@ -54,3 +54,18 @@
      right: 0;
      padding-right: 5vw;
 }
+
+input[type='file']{
+  display: none;
+}
+
+.fileUploaderLabel{
+  display: inline-block;
+}
+
+#imgPreview {
+  display: block;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}

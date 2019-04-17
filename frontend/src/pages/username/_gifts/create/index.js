@@ -1,4 +1,5 @@
 import React from 'react'
+import UIkit from 'uikit'
 
 class CreatePage extends React.Component {
   state = {
@@ -8,7 +9,8 @@ class CreatePage extends React.Component {
       user_id: 0,
       date: new Date(),
       image: null,
-      song: ''
+      song: '',
+      preview: null,
     },
     users: []
   }
@@ -46,10 +48,11 @@ class CreatePage extends React.Component {
     this.setState({
       gift: {
         ...this.state.gift,
-        image: e.target.files[0]
+        image: e.target.files[0],
+        preview: URL.createObjectURL(e.target.files[0])
       }
 
-    })
+    }, () => console.log(this.state.gift))
   }
 
   optionMap = () => {
@@ -81,7 +84,20 @@ class CreatePage extends React.Component {
             <input className="uk-input uk-border-rounded" type='text' name='song' placeholder='Song URL' value={this.state.song} onChange={this.handleChange} required />
           </div>
         </div>
-        <input type='file' name='image' onChange={this.handleFileUploader} />
+
+        <div className="js-upload uk-placeholder uk-text-center">
+          <span uk-icon="icon: cloud-upload"></span>
+          <span className="uk-text-middle">Place a photo or drawing here or by</span>
+          <div uk-form-custom>
+            <label id='fileUploaderLabel' className="uk-link">&nbsp;selecting one
+            <input type='file' name='image' onChange={this.handleFileUploader} />
+            {!!this.state.gift.preview &&
+              <img id='imgPreview' src={this.state.gift.preview}/>}
+            </label>
+          </div>
+        </div>
+
+
         <p>From: <i>{this.props.userObj.user.first_name} {this.props.userObj.user.last_name}</i></p>
         <button class="uk-button uk-button-primary uk-border-rounded">Send Gift</button>
       </form>
