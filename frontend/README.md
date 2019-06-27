@@ -1,5 +1,7 @@
 # Gifter
 
+You can find the video demo for Gifter here: https://youtu.be/R0d-uF6zPwA
+
 Web app where users can send other users personal electronic card containing a message, a image, and a song.
 
 ## Project Aim
