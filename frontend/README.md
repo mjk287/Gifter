@@ -1,8 +1,7 @@
 # Gifter
+![](.images/landing_page.png)
 
-You can find the video demo for Gifter here: https://youtu.be/R0d-uF6zPwA
-
-Web app where users can send other users personal electronic card containing a message, a image, and a song.
+Web app where users can send other users personal electronic card containing a message, a image, and a song. [*Gifter Backend*](https://github.com/kangyongn/gifter_backend)
 
 ## Project Aim
 1. Create a web app where users can send and receive personalized electronic cards.
@@ -13,8 +12,13 @@ Web app where users can send other users personal electronic card containing a m
 
 ## Gifter's Design
 1. Any registered user can create a electronic card to send to other registered user.
+![](.images/send_page.png)
+
 2. An electronic card needs to be customized by uploading a image file, inserting a YouTube URL, and entering a note for the receiver to listen and view.
+![](.images/gift_page.png)
+
 3. All electronic cards and it's content persist in the database with the sender's name and the date received, so the recipient can review and enjoy all their previous cards.
+![](.images/user_landing_page.png)
 
 ## Resources Used
 * React
